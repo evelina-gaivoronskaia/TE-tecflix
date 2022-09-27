@@ -3,7 +3,6 @@ package com.techelevator.model;
 import javax.validation.constraints.NotEmpty;
 
 public class AccountDTO {
-    @NotEmpty
     private int userId;
     private String firstName;
     private String lastName;
@@ -57,6 +56,8 @@ public class AccountDTO {
     }
 
     public void setSubscribedToEmailList(Boolean subscribedToEmailList) {
-        isSubscribedToEmailList = subscribedToEmailList;
+        this.isSubscribedToEmailList = subscribedToEmailList;
     }
+
+
 }

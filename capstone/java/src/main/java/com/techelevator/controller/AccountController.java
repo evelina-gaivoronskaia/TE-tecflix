@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @CrossOrigin
@@ -22,13 +23,9 @@ public class AccountController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/createProfile", method = RequestMethod.POST)
-    public void createAccount(@Valid @RequestBody AccountDTO newAccount) {
-        try {
-            Account account = accountDao.getAccountByEmailAddress(newAccount.getEmailAddress());
-            throw new AccountAlreadyExistsException();
-        } catch (AccountNotFoundException e){
-            accountDao.createAccount(newAccount.getUserId(), newAccount.getFirstName(), newAccount.getLastName(), newAccount.getEmailAddress(), newAccount.getTimeZone(), newAccount.getSubscribedToEmailList());
-        }
+    public boolean createAccount(@Valid @RequestBody AccountDTO newAccount, Principal principal) {
+            int userId = accountDao.findIdByUsername(principal.getName());
+            return accountDao.createAccount(userId, newAccount.getFirstName(), newAccount.getLastName(), newAccount.getEmailAddress(), newAccount.getTimeZone(), newAccount.getSubscribedToEmailList());
     }
 
 }
