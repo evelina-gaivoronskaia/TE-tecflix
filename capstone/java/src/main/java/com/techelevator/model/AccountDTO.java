@@ -3,7 +3,6 @@ package com.techelevator.model;
 import javax.validation.constraints.NotEmpty;
 
 public class AccountDTO {
-    @NotEmpty
     private int userId;
     private String firstName;
     private String lastName;
