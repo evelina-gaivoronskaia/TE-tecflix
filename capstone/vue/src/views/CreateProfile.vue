@@ -4,15 +4,15 @@
     <form class="profile-form" @submit.prevent="create">
       <h1 class="h3 mb-3 font-weight-normal">Create Profile</h1>
       <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <input type="text" id="fname" name="firstName" placeholder="Your name.." v-model="profile.firstName"/>
 
     <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <input type="text" id="lname" name="lastName" placeholder="Your last name.." v-model="profile.lastName"/>
 
     <label for= "email">Email Address </label>
-    <input type="text" id="email" name="email" placeholder="Your email address">
+    <input type="text" id="email" name="email" placeholder="Your email address" v-model="profile.email"/>
 
-    <select name ="timezone">
+    <select name ="timezone" v-model="profile.timezone">
       <option value= "Central Daylight Time">Central Daylight Time</option>
       <option value= "Eastern Daylight Time">Eastern Daylight Time</option>
       <option value= "Mountain Daylight Time">Mountain Daylight Time</option>
@@ -22,7 +22,7 @@
       <option value= "Hawaii-Aleutian Standard Time">Hawaii-Aleutian Standard Time</option>
   </select>
 
-  <input type="checkbox" id="subscribe" name="subscribe" >
+  <input type="checkbox" id="subscribe" name="subscribe" v-model="profile.subscribe"/>
   <label for= "subscribe">Subscribe to email list </label>
 
   <input type="submit" value="Submit">
@@ -49,11 +49,11 @@ data(){
   }
 },
 methods:{
-  createProfile(){
+  created(){
     Profile.createProfile(this.profile).then((response) => {
       if(response.status == 201) {
           this.$router.push({
-            path:'/login'
+            name:'home'
           })
       }
     })
