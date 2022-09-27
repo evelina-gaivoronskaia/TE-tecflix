@@ -56,6 +56,8 @@ public class AccountDTO {
     }
 
     public void setSubscribedToEmailList(Boolean subscribedToEmailList) {
-        isSubscribedToEmailList = subscribedToEmailList;
+        this.isSubscribedToEmailList = subscribedToEmailList;
     }
+
+
 }

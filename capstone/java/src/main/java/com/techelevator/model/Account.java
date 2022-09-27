@@ -7,7 +7,7 @@ public class Account {
     private String lastName;
     private String emailAddress;
     private String timeZone;
-    private Boolean isSubscribedToEmailList;
+    private boolean isSubscribedToEmailList;
 
     public Account() { }
 
@@ -74,7 +74,7 @@ public class Account {
     }
 
     public void setSubscribedToEmailList(Boolean subscribedToEmailList) {
-        isSubscribedToEmailList = subscribedToEmailList;
+        this.isSubscribedToEmailList = subscribedToEmailList;
     }
 
     @Override
