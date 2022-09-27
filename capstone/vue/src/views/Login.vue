@@ -1,5 +1,7 @@
 <template>
   <div id="login" class="text-center">
+    <div id="about"> Welcome to the Movie Suggestor we will give you movie suggestions
+      base on your favorite movies! </div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -74,3 +76,18 @@ export default {
   }
 };
 </script>
+<style >
+#login{
+ min-height: 10cm;
+ display: table-cell;
+ vertical-align: middle;
+ margin-left: auto;
+ margin-right: auto;
+width: 50%;
+text-align: center;
+
+
+  
+
+} 
+</style>
