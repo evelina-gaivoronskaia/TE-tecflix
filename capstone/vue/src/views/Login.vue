@@ -1,5 +1,6 @@
 <template>
   <div id="login" class="text-center">
+    <h1 class="logo">Tecflix</h1>
     <div id="about"> Welcome to the Movie Suggestor we will give you movie suggestions
       base on your favorite movies! </div>
     <form class="form-signin" @submit.prevent="login">
@@ -76,18 +77,46 @@ export default {
   }
 };
 </script>
-<style >
-#login{
- min-height: 10cm;
+<style  scoped>
+h1.logo{
+font-size: 100px;
+letter-spacing:3px ;
+text-transform: uppercase;
+font-family: Brushstroke, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-align: center;
+background: -webkit-linear-gradient(rgb(242, 173, 99), rgb(16, 35, 100));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+
+}
+
+
+.form-signin{
+margin: auto;
+  width: 40%;
+ text-align: center;
+ padding: 50px ;
+ /* margin-top: 400px;
+ margin-left: ;
+ margin-right: auto; */
+ /* min-height: 10cm;
  display: table-cell;
  vertical-align: middle;
  margin-left: auto;
  margin-right: auto;
 width: 50%;
+text-align: center; */
+}
+#about{
+font-family: 'Impact', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+color: rgb(209, 197, 186);
 text-align: center;
+ 
 
+}
+.logo{
+  font-size: 5rcm;
+}
 
-  
-
-} 
 </style>

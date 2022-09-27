@@ -10,8 +10,6 @@ export default {
     return axios.post('/register', user)
   },
 
-  createProfile(profile){
-  return axios.post('/createProfile',profile)
-  }
+ 
 
 }

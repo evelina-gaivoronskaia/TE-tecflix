@@ -14,12 +14,12 @@
 
     <select name ="timezone">
       <option value= "Central Daylight Time">Central Daylight Time</option>
-      <option value= "Eastern Daylight Time">Central Daylight Time</option>
-      <option value= "Mountain Daylight Time">Central Daylight Time</option>
-      <option value= "Mountain Standard Time">Central Daylight Time</option>
-      <option value= "Pacific Daylight Time">Central Daylight Time</option>
-      <option value= "Alaska Daylight Time">Central Daylight Time</option>
-      <option value= "Hawaii-Aleutian Standard Time">Central Daylight Time</option>
+      <option value= "Eastern Daylight Time">Eastern Daylight Time</option>
+      <option value= "Mountain Daylight Time">Mountain Daylight Time</option>
+      <option value= "Mountain Standard Time">Mountain Standard Time</option>
+      <option value= "Pacific Daylight Time">Pacific Daylight Time</option>
+      <option value= "Alaska Daylight Time">Alaska Daylight Time</option>
+      <option value= "Hawaii-Aleutian Standard Time">Hawaii-Aleutian Standard Time</option>
   </select>
 
   <input type="checkbox" id="subscribe" name="subscribe" >
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import authService from '../services/AuthService';
+import Profile from '../services/CreateProfileService';
 export default {
 name: 'createProfile',
 data(){
@@ -50,7 +50,7 @@ data(){
 },
 methods:{
   createProfile(){
-    authService.createProfile(this.profile).then((response) => {
+    Profile.createProfile(this.profile).then((response) => {
       if(response.status == 201) {
           this.$router.push({
             path:'/login'

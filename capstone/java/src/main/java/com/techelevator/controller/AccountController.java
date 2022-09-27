@@ -16,9 +16,9 @@ public class AccountController {
 
     private AccountDao accountDao;
 
-    public AccountController(AccountDao accountDao){
-        this.accountDao = accountDao;
-    }
+//    public AccountController(AccountDao accountDao){
+//        this.accountDao = accountDao;
+//    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/createProfile", method = RequestMethod.POST)
