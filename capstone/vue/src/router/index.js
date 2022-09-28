@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import CreateProfile from '../views/CreateProfile'
+import MovieDetail from '../views/MovieDetail.vue'
 
 Vue.use(Router)
 
@@ -55,10 +56,15 @@ const router = new Router({
       }
     },
     {
-      path:"/createProfile",
-      name:"createProfile",
+      path: "/createProfile",
+      name: "createProfile",
       component: CreateProfile,
 
+    },
+    {
+      path: "movies/:id",
+      name: "movieDetail",
+      component: MovieDetail
     }
   ]
 })

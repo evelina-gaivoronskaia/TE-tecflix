@@ -43,10 +43,10 @@ public class JdbcMovieDao implements MovieDAO{
     @Override
     public Movie createMovie(Movie movieToSave) {
         String sql = "INSERT INTO movie " +
-                    "(genre, release_year, " +
+                    "(release_year, " +
                     "director, title, summary, movie_img) " +
                     "VALUES (?, ?, ?, ?, ?, ?);";
-        Integer newMovie = jdbcTemplate.queryForObject(sql, Integer.class, movieToSave.getGenre(),
+        Integer newMovie = jdbcTemplate.queryForObject(sql, Integer.class,
                 movieToSave.getReleaseDate(), movieToSave.getTitle(),
                 movieToSave.getSummary(), movieToSave.getMovieImg());
         return getMovieByID(newMovie);
@@ -54,10 +54,10 @@ public class JdbcMovieDao implements MovieDAO{
 
     @Override
     public Movie updateMovie(Movie movieToUpdate, int movieId) {
-        String sql = "UPDATE movie SET genre = ?, release_year = ?, director = ?, " +
+        String sql = "UPDATE movie SET release_year = ?, director = ?, " +
                      "title = ?, summary = ?, movie_img = ? " +
                      "WHERE movie_id = ?;";
-        jdbcTemplate.update(sql, movieToUpdate.getGenre(), movieToUpdate.getReleaseDate(),
+        jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
                 movieToUpdate.getTitle(), movieToUpdate.getSummary(),
                 movieToUpdate.getMovieImg());
         return getMovieByID(movieId);
@@ -82,7 +82,6 @@ public class JdbcMovieDao implements MovieDAO{
         movie.setMovieId(rowSet.getInt("movie_id"));
         //movie.setGenre(rowSet.getInt("genre"));
         movie.setReleaseDate(rowSet.getString("release_date"));
-        //movie.setDirector(rowSet.getString("director"));
         movie.setTitle(rowSet.getString("title"));
         movie.setSummary(rowSet.getString("summary"));
         movie.setMovieImg(rowSet.getString("movieImg"));
