@@ -1,20 +1,22 @@
 <template>
   <div id="login" class="text-center">
     <h1 class="logo">Tecflix</h1>
-    <div id="about"> Welcome to the Movie Suggestor we will give you movie suggestions
-      base on your favorite movies! </div>
+    <div id="about">
+      Welcome to the Movie Suggestor we will give you movie suggestions base on
+      your favorite movies!
+    </div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+        Invalid username and password!
+      </div>
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      >
+        Thank you for registering, please sign in.
+      </div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -50,57 +52,54 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style  scoped>
-h1.logo{
-font-size: 100px;
-letter-spacing:3px ;
-text-transform: uppercase;
-font-family: Brushstroke, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-text-align: center;
-background: -webkit-linear-gradient(rgb(242, 173, 99), rgb(16, 35, 100));
+h1.logo {
+  font-size: 100px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: Brushstroke, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  background: -webkit-linear-gradient(rgb(242, 173, 99), rgb(16, 35, 100));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
-
 }
 
-
-.form-signin{
-margin: auto;
+.form-signin {
+  margin: auto;
   width: 40%;
- text-align: center;
- padding: 50px ;
- /* margin-top: 400px;
+  text-align: center;
+  padding: 50px;
+  /* margin-top: 400px;
  margin-left: ;
  margin-right: auto; */
- /* min-height: 10cm;
+  /* min-height: 10cm;
  display: table-cell;
  vertical-align: middle;
  margin-left: auto;
@@ -108,15 +107,13 @@ margin: auto;
 width: 50%;
 text-align: center; */
 }
-#about{
-font-family: 'Impact', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-color: rgb(209, 197, 186);
-text-align: center;
- 
-
+#about {
+  font-family: "Impact", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: rgb(209, 197, 186);
+  text-align: center;
 }
-.logo{
+.logo {
   font-size: 5rcm;
 }
-
 </style>

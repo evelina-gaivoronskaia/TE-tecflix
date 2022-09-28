@@ -59,27 +59,43 @@ export default {
   },
   methods: {
     register() {
+      var count = 0;
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = "Password & Confirm Password do not match.";
       } else {
-        authService
-          .register(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
-                path: "/login",
-                query: { registration: "success" },
-              });
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = "Bad Request: Validation Errors";
-            }
-          });
+        var i = 0;
+        var character = "";
+        while (i < this.user.password.length) {
+          character = this.user.password.charAt(i);
+          if (character == character.toUpperCase()) {
+            count++;
+          }
+          i++;
+        }
+        if (count > 0 && this.user.password.length >= 8) {
+          authService
+            .register(this.user)
+            .then((response) => {
+              if (response.status == 201) {
+                this.$router.push({
+                  path: "/login",
+                  query: { registration: "success" },
+                });
+              }
+            })
+            .catch((error) => {
+              const response = error.response;
+              this.registrationErrors = true;
+              if (response.status === 400) {
+                this.registrationErrorMsg = "Bad Request: Validation Errors";
+              }
+            });
+        } else {
+          this.registrationErrors = true;
+          this.registrationErrorMsg =
+            "Password MUST contain at least 8 characters and at least one Uppercase letter!";
+        }
       }
     },
     clearErrors() {
@@ -87,6 +103,22 @@ export default {
       this.registrationErrorMsg = "There were problems registering this user.";
     },
   },
+
+  // computed: {
+  //   passwordValidation() {
+  //     let errors = [];
+  //     for (let condition of this.rules) {
+  //       if (!condition.regex.test(this.password)) {
+  //         errors.push(condition.message);
+  //       }
+  //     }
+  //     if (errors.length === 0) {
+  //       return { valid: true, errors };
+  //     } else {
+  //       return { valid: false, errors };
+  //     }
+  //   },
+  // },
 };
 </script>
 
