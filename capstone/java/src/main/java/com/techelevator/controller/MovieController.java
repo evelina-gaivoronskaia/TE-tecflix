@@ -21,8 +21,8 @@ public class MovieController {
     MovieService movieService;
 
 
-    @GetMapping(path = "/movie")
-    public List<Movie> listMovies() {
+    @GetMapping(path = "/movies")
+    public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
     
