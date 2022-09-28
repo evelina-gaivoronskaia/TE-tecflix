@@ -1,11 +1,11 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 id="header" class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label id="usernameLabel" for="username" class="sr-only">Username</label>
       <input
         type="text"
         id="username"
@@ -15,7 +15,8 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+
+      <label id="passwordLabel" for="password" class="sr-only">Password</label>
       <input
         type="password"
         id="password"
@@ -32,8 +33,14 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <router-link id="link" :to="{ name: 'login' }"
+        >Have an account?</router-link
+      >
+      <button
+        id="createAccount"
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+      >
         Create Account
       </button>
     </form>
@@ -122,4 +129,105 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&display=swap");
+
+form {
+  display: grid;
+  grid-template-areas: 1fr 1fr;
+  grid-template-areas:
+    "header header"
+    "usernameLabel username"
+    "passwordLabel password"
+    "passwordLabel confirmPassword"
+    ". ."
+    "link link"
+    "createAccount createAccount";
+  gap: 20px;
+}
+
+#header {
+  grid-area: header;
+  color: #ff6626;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+}
+
+#usernameLabel {
+  grid-area: usernameLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 25px;
+}
+
+#username {
+  grid-area: username;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+#passwordLabel {
+  grid-area: passwordLabel;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 25px;
+}
+
+#password {
+  grid-area: password;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+#confirmPassword {
+  grid-area: confirmPassword;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+#link {
+  grid-area: link;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 25px;
+}
+
+#createAccount {
+  grid-area: createAccount;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 20px;
+}
+
+.form-register {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  align-content: center;
+  border-width: 3px;
+  border-style: groove;
+  border-color: #f2f2fc;
+  padding: 80px;
+  margin-top: 0.5em;
+  background-color: #010130;
+}
+
+#password,
+#confirmPassword,
+#username {
+  padding: 2px;
+  margin: 5px 5px 5px 5px;
+  border: 0;
+  box-shadow: 0 0 15px 4px #ff6626;
+  text-align: center;
+  align-content: center;
+}
+
+#link {
+  color: #b95d07;
+}
+
+/* #createAccount {
+  display: block;
+} */
+</style>
