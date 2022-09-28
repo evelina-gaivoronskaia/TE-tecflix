@@ -3,6 +3,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <form class="profile-form" @submit.prevent="createProfile">
       <h1 class="cp">Create Profile</h1>
+
+      <ul>
+        <li>
       <label for="fname">First Name</label>
       <input
         type="text"
@@ -12,6 +15,8 @@
         placeholder="Your name.."
         v-model="profile.firstName"
       />
+      </li>
+      <li>
 
       <label for="lname">Last Name</label>
       <input
@@ -22,6 +27,8 @@
         placeholder="Your last name.."
         v-model="profile.lastName"
       />
+      </li>
+      <li>
 
       <label for="email">Email Address </label>
       <input
@@ -32,6 +39,8 @@
         placeholder="Your email address"
         v-model="profile.emailAddress"
       />
+      </li>
+      <li>
 
       <select name="timezone" class="form-control" v-model="profile.timeZone">
         <option value="CDT">Central Daylight Time</option>
@@ -42,6 +51,8 @@
         <option value="ADT">Alaska Daylight Time</option>
         <option value="HST">Hawaii-Aleutian Standard Time</option>
       </select>
+      </li>
+      <li>
 
       <input
         type="checkbox"
@@ -51,6 +62,8 @@
         v-model="profile.subscribedToEmailList"
       />
       <label for="subscribedToEmailList">Subscribe to email list </label>
+      </li>
+      </ul>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Submit
