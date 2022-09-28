@@ -1,14 +1,19 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Movie {
 
+    @JsonProperty("id")
     private int movieId;
-    //private String tmdbMovieID;
-    private String genre;
-    private String releaseYear;
-    private String director;
+    private int[] genre;
+    @JsonProperty("release_date")
+    private String releaseDate;
+    //private String director;
     private String title;
+    @JsonProperty("overview")
     private String summary;
+    @JsonProperty("backdrop_path")
     private String movieImg;
 
     public int getMovieId() {
@@ -19,29 +24,29 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public String getGenre() {
+    public int[] getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(int[] genre) {
         this.genre = genre;
     }
 
-    public String getReleaseYear() {
-        return releaseYear;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setReleaseYear(String releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public String getDirector() {
-        return director;
-    }
+//    public String getDirector() {
+//        return director;
+//    }
 
-    public void setDirector(String director) {
-        this.director = director;
-    }
+//    public void setDirector(String director) {
+//        this.director = director;
+//    }
 
     public String getTitle() {
         return title;
