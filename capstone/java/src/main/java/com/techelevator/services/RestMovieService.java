@@ -16,11 +16,16 @@ public class RestMovieService implements MovieService {
     private final String API_URL = "https://api.themoviedb.org/3";
 
 
-    @Override
-    public List<Movie> getAllMovies() {
+   //@Override
+    public List<Movie> getAllMovies(String imdbId) {
 
         MovieGeneral mg = restTemplate.getForObject(API_URL, MovieGeneral.class);
         Movie[] movies = mg.getResults();
         return Arrays.asList(movies);
+    }
+
+    @Override
+    public List<Movie> getAllMovies() {
+        return null;
     }
 }
