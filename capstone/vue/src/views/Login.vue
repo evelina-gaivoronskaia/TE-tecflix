@@ -2,11 +2,13 @@
   <div id="login" class="text-center">
     <h1 class="logo">Tecflix</h1>
     <div id="about">
-      Welcome to the Movie Suggestor we will give you movie suggestions base on
-      your favorite movies!
+      <span>
+        Welcome to the Movie Suggestor we will give you movie suggestions base
+        on your favorite movies!</span
+      >
     </div>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="sign">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -36,9 +38,15 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link style="color: blue" :to="{ name: 'register' }"
+        >Need an account?</router-link
+      >
       <button type="submit">Sign in</button>
     </form>
+    <link
+      href="https://fonts.googleapis.com/css?family=Abel"
+      rel="stylesheet"
+    />
   </div>
 </template>
 
@@ -81,21 +89,42 @@ export default {
 </script>
 <style  scoped>
 h1.logo {
-  font-size: 100px;
+  font-size: 130px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  font-family: Brushstroke, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-family: "Abel", "Brushstroke", "Haettenschweiler", "Arial Narrow Bold",
+    sans-serif;
   text-align: center;
-  background: -webkit-linear-gradient(rgb(242, 173, 99), rgb(16, 35, 100));
+
+  background: -webkit-linear-gradient(rgb(250, 130, 1), rgb(4, 38, 150));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.sign {
+  font-family: "Abel";
+  color: rgb(0, 4, 7);
+  background-color: rgba(220, 146, 85, 0.5);
+  border-width: 3px;
+  border-top: solid;
+  border-bottom: solid;
+  margin-bottom: 55px;
+  border-color: #010130;
+}
 
 .form-signin {
-  margin: auto;
-  width: 40%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
   text-align: center;
-  padding: 50px;
+  padding: 10px;
+  border-width: 3px;
+  /* border-right: solid;
+ border-left: solid ; */
+  border-color: #010130;
+  padding: 80px;
+  margin-top: 0.5em;
+  background-color: rgba(252, 251, 251, 0.5);
+
   /* margin-top: 400px;
  margin-left: ;
  margin-right: auto; */
@@ -108,11 +137,47 @@ width: 50%;
 text-align: center; */
 }
 #about {
-  font-family: "Impact", "Lucida Sans Regular", "Lucida Grande",
+  font-family: "Time", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: rgb(209, 197, 186);
+  color: rgb(253, 250, 246);
   text-align: center;
+  border-style: none;
 }
+
+span {
+  background-color: rgba(10, 2, 48, 0.9);
+}
+input[type="text"] {
+  padding: 2px;
+  border: 0;
+  box-shadow: 0 0 15px 4px #ff6626;
+}
+input[type="password"] {
+  padding: 2px;
+  border: 0;
+  box-shadow: 0 0 15px 4px #ff6626;
+}
+input:hover {
+  background: rgb(240, 172, 83);
+}
+button {
+  display: inline-block;
+  padding: 0.25em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Georgia", sans-serif;
+  font-weight: 300;
+  color: #06053b;
+  text-align: center;
+  transition: all 0.2s;
+}
+button:hover {
+  color: #b95d07;
+}
+
 .logo {
   font-size: 5rcm;
 }
