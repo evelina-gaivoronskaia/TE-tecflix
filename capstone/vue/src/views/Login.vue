@@ -38,9 +38,7 @@
         v-model="user.password"
         required
       />
-      <router-link style="color: blue" :to="{ name: 'register' }"
-        >Need an account?</router-link
-      >
+      <router-link style=" color: orange;" :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
     <link
@@ -88,22 +86,21 @@ export default {
 };
 </script>
 <style  scoped>
-h1.logo {
-  font-size: 130px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-family: "Abel", "Brushstroke", "Haettenschweiler", "Arial Narrow Bold",
-    sans-serif;
-  text-align: center;
+h1.logo{
+font-size: 100px;
+letter-spacing:3px ;
+text-transform: uppercase;
+font-family: 'Abel' ,'Brushstroke', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+text-align: center;
 
-  background: -webkit-linear-gradient(rgb(250, 130, 1), rgb(4, 38, 150));
+background: -webkit-linear-gradient(rgb(250, 146, 49), rgb(232, 236, 252));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .sign {
   font-family: "Abel";
   color: rgb(0, 4, 7);
-  background-color: rgba(220, 146, 85, 0.5);
+  background-color:#ff6626;
   border-width: 3px;
   border-top: solid;
   border-bottom: solid;
@@ -115,17 +112,18 @@ h1.logo {
   margin: 0 auto;
   width: 100%;
   max-width: 500px;
-  text-align: center;
-  padding: 10px;
-  border-width: 3px;
-  /* border-right: solid;
+ text-align: center;
+ padding: 10px ;
+ border-width:3px;
+ border-style: groove;
+ /* border-right: solid;
  border-left: solid ; */
-  border-color: #010130;
-  padding: 80px;
-  margin-top: 0.5em;
-  background-color: rgba(252, 251, 251, 0.5);
-
-  /* margin-top: 400px;
+border-color: #f2f2fc;
+ padding: 80px;
+ margin-top: .5em;
+background-color: #010130 
+ 
+ /* margin-top: 400px;
  margin-left: ;
  margin-right: auto; */
   /* min-height: 10cm;
