@@ -4,6 +4,9 @@
     <router-link class="link" :to="{ name: 'createProfile' }"
       >CREATE PROFILE</router-link
     >
+    <router-link class="link" :to="{ name: 'browseMovies' }">
+      See Movie
+    </router-link>
   </div>
 </template>
 
