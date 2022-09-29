@@ -2,7 +2,12 @@
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 id="header" class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+      <div
+        id="error"
+        class="alert alert-danger"
+        role="alert"
+        v-if="registrationErrors"
+      >
         {{ registrationErrorMsg }}
       </div>
       <label id="usernameLabel" for="username" class="sr-only">Username</label>
@@ -142,6 +147,7 @@ form {
     "passwordLabel confirmPassword"
     ". ."
     "link link"
+    "error error"
     "createAccount createAccount";
   gap: 20px;
 }
@@ -150,7 +156,7 @@ form {
   grid-area: header;
   color: #ff6626;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 #usernameLabel {
@@ -188,6 +194,13 @@ form {
 
 #link {
   grid-area: link;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 25px;
+}
+
+#error {
+  grid-area: error;
+  color: #ff5e0e;
   font-family: "Bebas Neue", sans-serif;
   font-size: 25px;
 }
