@@ -1,7 +1,11 @@
 <template>
   <div id="createProfile">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <form class="profile-form" @submit.prevent="createProfile">
-      <h1 class="h3 mb-3 font-weight-normal">Create Profile</h1>
+      <h1 class="cp">Create Profile</h1>
+
+      <ul>
+        <li>
       <label for="fname">First Name</label>
       <input
         type="text"
@@ -11,6 +15,8 @@
         placeholder="Your name.."
         v-model="profile.firstName"
       />
+      </li>
+      <li>
 
       <label for="lname">Last Name</label>
       <input
@@ -21,6 +27,8 @@
         placeholder="Your last name.."
         v-model="profile.lastName"
       />
+      </li>
+      <li>
 
       <label for="email">Email Address </label>
       <input
@@ -31,6 +39,8 @@
         placeholder="Your email address"
         v-model="profile.emailAddress"
       />
+      </li>
+      <li>
 
       <select name="timezone" class="form-control" v-model="profile.timeZone">
         <option value="CDT">Central Daylight Time</option>
@@ -41,6 +51,8 @@
         <option value="ADT">Alaska Daylight Time</option>
         <option value="HST">Hawaii-Aleutian Standard Time</option>
       </select>
+      </li>
+      <li>
 
       <input
         type="checkbox"
@@ -50,6 +62,8 @@
         v-model="profile.subscribedToEmailList"
       />
       <label for="subscribedToEmailList">Subscribe to email list </label>
+      </li>
+      </ul>
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Submit
@@ -102,12 +116,21 @@ export default {
   box-sizing: border-box;
 } */
 
+label{
+  color: white;
+}
+.cp{
+ font-family: 'Poppins', sans-serif;
+ color:#010130
+}
+
+
 #createProfile {
   width: 100%;
-  background-color: #0525a8;
-  color: orange;
-  padding: 14px 20px;
-  margin: 8px 0;
+  /* background-color: #0525a8;
+  color: orange; */
+  padding: 20px 20px;
+  margin: 20px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -119,10 +142,27 @@ input[type="submit"]:hover {
 
 .profile-form {
   border-radius: 5px;
-  background: linear-gradient(
-    rgba(192, 107, 28, 0.933),
-    rgba(18, 13, 126, 0.933)
-  );
-  padding: 20px;
+  background: linear-gradient(rgb(250, 130, 1), rgb(4, 38, 150));
+  padding: 20px
+  ;
+  
+}
+
+button{
+  display:inline-block;
+padding:0.25em 1.2em;
+border:0.1em solid #FFFFFF;
+margin:0 0.3em 0.3em 0;
+border-radius:0.12em;
+box-sizing: border-box;
+text-decoration:none;
+font-family:'Georgia',sans-serif;
+font-weight:300;
+color:#06053b;
+text-align:center;
+transition: all 0.2s;
+}
+button:hover{
+  color: #b95d07;
 }
 </style>
