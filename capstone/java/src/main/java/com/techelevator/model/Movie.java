@@ -15,6 +15,7 @@ public class Movie {
     private String summary;
     @JsonProperty("poster_path")
     private String movieImg;
+//    final String ROUTE = "http://image.tmbd.org/t/p/w185/";
 
     public int getMovieId() {
         return movieId;

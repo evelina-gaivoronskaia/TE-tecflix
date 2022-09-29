@@ -9,7 +9,11 @@
         {{ movie.title }}
       </router-link>
       <h2>{{ movie.release_date }}</h2>
-      <img v-bind:src="movie.poster_path" class="movie_img" />
+      <img
+        v-if="movie.poster_path"
+        class="movie_img"
+        v-bind:src="'http://image.tmdb.org/t/p/w185' + movie.poster_path"
+      />
       <h3>{{ movie.overview }}</h3>
     </div>
   </div>
@@ -19,9 +23,15 @@
 import movieService from "../services/MovieService";
 
 export default {
+  // data() {
+  //   return {
+  //     httpPath: "http://image.tmbd.org/t/p/w185/",
+  //   };
+  // },
   created() {
     this.retrieveMovies();
   },
+
   methods: {
     retrieveMovies() {
       movieService
