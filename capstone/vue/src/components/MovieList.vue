@@ -1,35 +1,65 @@
 <template>
-  <div class="card" v-on:click="grabMovie" v-bind:to="{name: 'movie-details'}">
-    <div class="movie-details" v-for="movie in movies" v-bind:key="movie.movieId">
-      <h2 class="title">{{movie.title}}</h2>
-      <h3 class="release-date">{{movie.release_date}}</h3>
-      <img v-bind:src="movie.movie_img" class="movie_img"/>
-      <p class="summary">{{movie.summary}}</p>
-
+  <div>
+    <div
+      class="movie"
+      :key="movie.movie_id"
+      v-for="movie in this.$store.state.movies"
+    >
+      <router-link id="title" :to="{ name: 'movieCard' }">
+        {{ movie.title }}
+      </router-link>
+      <h2>{{ movie.release_date }}</h2>
+      <img v-bind:src="movie.poster_path" class="movie_img" />
+      <h3>{{ movie.overview }}</h3>
     </div>
   </div>
 </template>
 
 <script>
-
+import movieService from "../services/MovieService";
 
 export default {
-    name: "movie-card",
-    data() {
-        return { 
-          movie: {
-            movie_id: "",
-            title: "",
-            release_date: "",
-            summary: "",
-            movie_img: "",
-          },
-          movies: []
-        };
+  created() {
+    this.retrieveMovies();
+  },
+  methods: {
+    retrieveMovies() {
+      movieService
+        .getAllMovies()
+        .then((response) => {
+          this.$store.commit("SET_MOVIES", response.data);
+        })
+        .catch((error) => {
+          if (error.response.status === 400) {
+            console.log("Client error");
+          } else if (error.response.status === 500) {
+            console.log("Server error");
+          } else {
+            console.log(error);
+          }
+        });
     },
-}
+  },
+};
 </script>
 
 <style>
-
+.movie {
+  display: flex;
+  justify-content: center;
+  background-color: #010130;
+  color: aliceblue;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 10px, 20px, 10px, 20px;
+  border-radius: 15px 50px;
+  margin: 30px 30px 30px 30px;
+  opacity: 80%;
+  width: 45em;
+  text-align: center;
+}
+#title {
+  color: aliceblue;
+  font-size: 35px;
+}
 </style>

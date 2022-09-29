@@ -6,7 +6,14 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import CreateProfile from '../views/CreateProfile'
+<<<<<<< HEAD
 import MovieDetail from '../views/MovieDetail.vue'
+=======
+import MovieCard from '../components/MovieCard'
+import MovieList from '../components/MovieList'
+import BrowseMovies from '../views/BrowseMovies'
+import Movie from '../views/Movie'
+>>>>>>> main
 
 Vue.use(Router)
 
@@ -62,9 +69,30 @@ const router = new Router({
 
     },
     {
+<<<<<<< HEAD
       path: "movies/:id",
       name: "movieDetail",
       component: MovieDetail
+=======
+      path: "/movieCard",
+      name: "movieCard",
+      component: MovieCard,
+    },
+    {
+      path: "/movieList",
+      name: "movieList",
+      component: MovieList,
+    },
+    {
+      path: "/browseMovies",
+      name: "browseMovies",
+      component: BrowseMovies,
+    },
+    {
+      path: "/movie",
+      name: "movie",
+      component: Movie,
+>>>>>>> main
     }
   ]
 })
