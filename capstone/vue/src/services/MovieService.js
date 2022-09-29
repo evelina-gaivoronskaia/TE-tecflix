@@ -8,6 +8,9 @@ export default {
 
     getMovies() {
         return axios.get('/movies/${movieId}')
+    },
+    getMoviesById(movieId){
+        return axios.get(`/movies/${movieId}`)
     }
 
 

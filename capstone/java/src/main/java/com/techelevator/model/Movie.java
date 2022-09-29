@@ -16,6 +16,8 @@ public class Movie {
     @JsonProperty("backdrop_path")
     private String movieImg;
 
+    public Movie() {}
+
     public int getMovieId() {
         return movieId;
     }
@@ -39,6 +41,8 @@ public class Movie {
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
+
 
 //    public String getDirector() {
 //        return director;
