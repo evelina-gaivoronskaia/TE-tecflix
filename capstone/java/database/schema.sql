@@ -3,6 +3,10 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS movie CASCADE;
 DROP TABLE IF EXISTS account CASCADE;
+DROP TABLE IF EXISTS account_movie CASCADE;
+DROP TABLE IF EXISTS genre CASCADE;
+DROP TABLE IF EXISTS movie_genre CASCADE;
+
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -13,14 +17,14 @@ CREATE TABLE users (
 );
 
 CREATE TABLE movie (
-    movie_id SERIAL,
+    movie_id int,
     --genre_name VARCHAR(100) NOT NULL,
     release_date VARCHAR(15) NOT NULL,
     --director VARCHAR(100) NOT NULL,
     title VARCHAR(50) NOT NULL,
     summary VARCHAR(1000) NOT NULL,
     movie_img TEXT,
-    
+
     CONSTRAINT PK_movie PRIMARY KEY (movie_id)
 );
 
@@ -49,6 +53,17 @@ CREATE TABLE movie_genre (
 	CONSTRAINT PK_movie_genre PRIMARY KEY(movie_id, genre_id),
     CONSTRAINT FK_movie_genre_movie FOREIGN KEY(movie_id) REFERENCES movie(movie_id),
     CONSTRAINT FK_movie_genre_genre FOREIGN KEY(genre_id) REFERENCES genre(genre_id)
+);
+
+CREATE TABLE account_movie (
+    account_id int,
+    movie_id int,
+    favorite BOOLEAN,
+    seen BOOLEAN,
+
+	CONSTRAINT PK_account_movie PRIMARY KEY(account_id, movie_id),
+    CONSTRAINT FK_account_movie_account FOREIGN KEY (account_id) REFERENCES account (account_id),
+    CONSTRAINT FK_account_movie_movie FOREIGN KEY (movie_id) REFERENCES movie (movie_id)
 );
 
 INSERT INTO genre (genre_id, genre_name) VALUES (28, 'Action');

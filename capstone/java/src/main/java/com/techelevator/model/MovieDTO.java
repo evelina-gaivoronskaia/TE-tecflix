@@ -2,8 +2,7 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Movie {
-
+public class MovieDTO {
     @JsonProperty("id")
     private int movieId;
     private int[] genre;
@@ -19,9 +18,6 @@ public class Movie {
     private Boolean favorite;
     @JsonProperty("seen")
     private Boolean seen;
-//    final String ROUTE = "http://image.tmbd.org/t/p/w185/";
-
-    public Movie() {}
 
     public int getMovieId() {
         return movieId;
@@ -46,16 +42,6 @@ public class Movie {
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
-
-
-
-//    public String getDirector() {
-//        return director;
-//    }
-
-//    public void setDirector(String director) {
-//        this.director = director;
-//    }
 
     public String getTitle() {
         return title;
