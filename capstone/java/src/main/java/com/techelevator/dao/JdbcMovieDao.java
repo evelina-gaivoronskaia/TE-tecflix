@@ -53,13 +53,19 @@ public class JdbcMovieDao implements MovieDAO{
     }
 
     @Override
-    public Movie updateMovie(Movie movieToUpdate, int movieId) {
+    public Movie updateMovie(Movie movieToUpdate, int movieId, String username) {
+        String accountIdSql = "SELECT account_id FROM account " +
+                "JOIN users ON account.user_id = users.user_id " +
+                "WHERE username ILIKE ?";
+        Integer accountId = jdbcTemplate.queryForObject(accountIdSql, Integer.class, username);
+
         String sql = "UPDATE movie SET release_date = ?, " +
                      "title = ?, summary = ?, movie_img = ?, favorite = ?, seen = ?  " +
-                     "WHERE movie_id = ?;";
+                    "JOIN account_movie ON movie.movie_id = account_movie.movie_id" +
+                     "WHERE movie_id ILIKE ? AND account_id ILIKE ?;";
         jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
                 movieToUpdate.getTitle(), movieToUpdate.getSummary(),
-                movieToUpdate.getMovieImg(), movieToUpdate.getFavorite(), movieToUpdate.getSeen());
+                movieToUpdate.getMovieImg(), movieToUpdate.getFavorite(), movieToUpdate.getSeen(), movieToUpdate.getMovieId(), accountId);
         return getMovieByID(movieId);
     }
 
