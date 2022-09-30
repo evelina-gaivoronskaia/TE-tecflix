@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Movie;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -54,18 +55,36 @@ public class JdbcMovieDao implements MovieDAO{
 
     @Override
     public Movie updateMovie(Movie movieToUpdate, int movieId, String username) {
+        //finds whos account this is
         String accountIdSql = "SELECT account_id FROM account " +
                 "JOIN users ON account.user_id = users.user_id " +
-                "WHERE username ILIKE ?";
+                "WHERE username = ?";
         Integer accountId = jdbcTemplate.queryForObject(accountIdSql, Integer.class, username);
 
-        String sql = "UPDATE movie SET release_date = ?, " +
-                     "title = ?, summary = ?, movie_img = ?, favorite = ?, seen = ?  " +
-                    "JOIN account_movie ON movie.movie_id = account_movie.movie_id" +
-                     "WHERE movie_id ILIKE ? AND account_id ILIKE ?;";
-        jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
-                movieToUpdate.getTitle(), movieToUpdate.getSummary(),
-                movieToUpdate.getMovieImg(), movieToUpdate.getFavorite(), movieToUpdate.getSeen(), movieToUpdate.getMovieId(), accountId);
+            //updates the movie IF MOVIE TIED TO ACCOUNT
+
+            try {
+                String movieSql = "SELECT seen FROM account_movie WHERE movie_id = ? AND account_id = ?;";
+                Boolean result = jdbcTemplate.queryForObject(movieSql, Boolean.class, movieId, accountId);
+
+                String sql = "UPDATE movie SET release_date = ?, " +
+                        "title = ?, summary = ?, movie_img = ? " +
+                        "WHERE movie_id = ?";
+                jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
+                        movieToUpdate.getTitle(), movieToUpdate.getSummary(),
+                        movieToUpdate.getMovieImg(), movieToUpdate.getMovieId());
+
+                String sql2 = "UPDATE account_movie SET favorite = ?, seen = ? " +
+                        "WHERE movie_id = ? AND account_id = ?;";
+
+                jdbcTemplate.update(sql2, movieToUpdate.getFavorite(), movieToUpdate.getSeen(), movieToUpdate.getMovieId(), accountId);
+            }
+            catch (EmptyResultDataAccessException e){
+                String insert = "INSERT INTO account_movie (account_id, movie_id, favorite, seen) VALUES (?,?,?,?)";
+                   jdbcTemplate.update(insert, accountId, movieId, movieToUpdate.getFavorite(), movieToUpdate.getSeen());
+            }
+
+
         return getMovieByID(movieId);
     }
 
@@ -91,7 +110,7 @@ public class JdbcMovieDao implements MovieDAO{
         //movie.setDirector(rowSet.getString("director"));
         movie.setTitle(rowSet.getString("title"));
         movie.setSummary(rowSet.getString("summary"));
-        movie.setMovieImg(rowSet.getString("movieImg"));
+        movie.setMovieImg(rowSet.getString("movie_img"));
         return movie;
     }
 }
