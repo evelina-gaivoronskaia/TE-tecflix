@@ -13,8 +13,9 @@ public class Movie {
     private String title;
     @JsonProperty("overview")
     private String summary;
-    @JsonProperty("backdrop_path")
+    @JsonProperty("poster_path")
     private String movieImg;
+//    final String ROUTE = "http://image.tmbd.org/t/p/w185/";
 
     public Movie() {}
 

@@ -3,16 +3,13 @@ import axios from 'axios';
 export default {
 
     getAllMovies() {
-        return axios.get('/movies')
+        return axios.get(`/movies`)
     },
 
-    getMovies() {
-        return axios.get('/movies/${movieId}')
-    },
-    getMoviesById(movieId){
+  
+    
+    getMovie(movieId) {
         return axios.get(`/movies/${movieId}`)
     }
-
-
 
 }
