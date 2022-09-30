@@ -9,7 +9,7 @@ public interface MovieDAO {
     List<Movie> getList();
     Movie getMovieByID(int movieId);
     Movie createMovie(Movie movieToSave);
-    Movie updateMovie(Movie movieToUpdate, int movieId);
+    Movie updateMovie(Movie movieToUpdate, int movieId, String username);
     boolean deleteMovie(int movieId);
 
 }
