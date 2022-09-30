@@ -54,12 +54,12 @@ public class JdbcMovieDao implements MovieDAO{
 
     @Override
     public Movie updateMovie(Movie movieToUpdate, int movieId) {
-        String sql = "UPDATE movie SET genre = ?, release_year = ?, director = ?, " +
-                     "title = ?, summary = ?, movie_img = ? " +
+        String sql = "UPDATE movie SET release_date = ?, " +
+                     "title = ?, summary = ?, movie_img = ?, favorite = ?, seen = ?  " +
                      "WHERE movie_id = ?;";
-        jdbcTemplate.update(sql, movieToUpdate.getGenre(), movieToUpdate.getReleaseDate(),
+        jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
                 movieToUpdate.getTitle(), movieToUpdate.getSummary(),
-                movieToUpdate.getMovieImg());
+                movieToUpdate.getMovieImg(), movieToUpdate.getFavorite(), movieToUpdate.getSeen());
         return getMovieByID(movieId);
     }
 
