@@ -1,10 +1,12 @@
 <template>
   <!-- <div class="card" v-on:click="getMovie" v-bind:to="{name: 'movie-details'}"> -->
-  <div>
+    <div class ="card" v-bind:class="{seen: movie.seen}">
+  
     <div class="movie-details">
       <h2 class="title">{{ movie.title }}</h2>
-      <h3 class="release-date">{{ movie.release_date }}</h3>
       <img v-bind:src="movie.movie_img" class="movie_img" />
+      <h3 class= "genre">{{movie.genre}} </h3>
+      <p class="release-date">{{ movie.release_date }}</p>
       <p class="summary">{{ movie.summary }}</p>
     </div>
   </div>
@@ -16,6 +18,15 @@ import MovieService from "../services/MovieService";
 
 export default {
   name: "movie-card",
+  props: {
+    movie: Object,
+    enableAdd:{
+      type:Boolean,
+      default:false
+      
+    }
+  },
+  
   methods: {
     // getMovies() {
     //     MovieService.getAllMovies().then(response => {
@@ -27,19 +38,23 @@ export default {
     created() {
       MovieService.getMovie(this.$route.params.movie_id);
     },
+    setSeen(value){
+      this.$sore.commit('SET_SEEN_STATUS',{movie: this.movie, value:value})
+    }
   },
-  data() {
-    return {
-      movie: {
-        movie_id: "",
-        title: "",
-        release_date: "",
-        summary: "",
-        movie_img: "",
-      },
-      movies: [],
-    };
-  },
+  // data() {
+  //   return {
+  //     movie: {
+  //       movie_id: "",
+  //       title: "",
+  //       release_date: "",
+  //       summary: "",
+  //       movie_img: "",
+  //       genre:""
+  //     },
+  //     movies: [],
+  //   };
+  // },
   created() {
     this.grabMovie();
   },
@@ -47,6 +62,14 @@ export default {
 </script>
 
 <style>
+
+.card{
+   border: 2px solid black;
+    border-radius: 10px;
+    width: 250px;
+    height: 550px;
+    margin: 20px;
+}
 .movie-card {
   /* display: flex;
     justify-content: center;

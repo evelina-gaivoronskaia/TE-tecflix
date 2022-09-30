@@ -6,8 +6,6 @@ export default {
         return axios.get(`/movies`)
     },
 
-  
-    
     getMovie(movieId) {
         return axios.get(`/movies/${movieId}`)
     }

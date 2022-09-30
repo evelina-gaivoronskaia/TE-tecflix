@@ -41,6 +41,9 @@ export default new Vuex.Store({
     },
     SET_MOVIES(state, data) {
       state.movies = data;
+    },
+    SET_SEEN_STATUS(state,payload){
+      payload.movie.read = payload.value;
     }
   }
 })
