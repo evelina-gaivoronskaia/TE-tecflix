@@ -52,6 +52,10 @@
       </ul>
       <button type="submit">Sign in</button>
     </form>
+     <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Abel"
       rel="stylesheet"
@@ -97,7 +101,7 @@ export default {
 };
 </script>
 <style  scoped>
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&display=swap");
 
 
 
@@ -121,13 +125,14 @@ h1.logo {
   color: #f24700;
   line-height: 20%;
   border-radius: 1em;
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
-  font-family: "Abel";
+  box-shadow: 0 2px 5px 1px rgba(247, 246, 245, 0.2);
+  font-family: "Bebas Neue", sans-serif;
   font-size: 30px;
-   border: 2px inset #9090a5; 
+  font-weight: 3;
+   /* border: 2px inset #9090a5; 
   border-style:outset;
   border-radius: 1em; 
-  border-color: #e6e6f1;
+  border-color: #e6e6f1; */
   /* border-radius: 3px 3px 0 0; */
 
   /* border-width: 3px;
@@ -142,10 +147,12 @@ form{
   height: 350px;
   background-color: #010130;
   padding: 2em;
-   border: 2px inset #9090a5; 
+  background:#010130;
+border-radius:8px;
+   /* border: 2px inset #9090a5; 
   border-style:outset;
   border-radius: 1em; 
-  border-color: #e6e6f1; 
+  border-color: #e6e6f1;  */
   align-items: center;
   
 }
