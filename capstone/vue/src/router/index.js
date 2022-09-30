@@ -65,6 +65,11 @@ const router = new Router({
 
     },
     {
+      path:"/movies/{id}",
+      name:"browseMovies",
+      component: BrowseMovies,
+    },
+    {
       path: "/movieCard",
       name: "movieCard",
       component: MovieCard,
@@ -84,6 +89,8 @@ const router = new Router({
       name: "movie",
       component: Movie,
     }
+
+
   ]
 })
 

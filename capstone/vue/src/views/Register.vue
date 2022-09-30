@@ -209,6 +209,7 @@ form {
   grid-area: createAccount;
   font-family: "Bebas Neue", sans-serif;
   font-size: 20px;
+  margin: 0px 50px 0px 50px;
 }
 
 .form-register {
@@ -221,7 +222,7 @@ form {
   border-style: groove;
   border-color: #f2f2fc;
   padding: 80px;
-  margin-top: 0.5em;
+  margin-top: 10em;
   background-color: #010130;
 }
 
