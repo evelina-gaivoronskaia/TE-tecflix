@@ -1,11 +1,12 @@
 <template>
   <!-- <div class="card" v-on:click="getMovie" v-bind:to="{name: 'movie-details'}"> -->
-  <div>
-    <div class="movie-details">
+  <div class="test">
+    <div v-for="movie in movies" v-bind:key="movie.title" class="movie-details">
+      <!-- <h1>HEllo</h1> -->
       <h2 class="title">{{ movie.title }}</h2>
+      <img v-bind:src="'http://image.tmdb.org/t/p/w185' + movie.poster_path" id="movie" />
       <h3 class="release-date">{{ movie.release_date }}</h3>
-      <img v-bind:src="movie.movie_img" class="movie_img" />
-      <p class="summary">{{ movie.summary }}</p>
+      <p class="summary">{{ movie.overview }}</p>
     </div>
   </div>
 </template>
@@ -24,10 +25,21 @@ export default {
     //        }
     //     });
     // },
-    created() {
-      MovieService.getMovie(this.$route.params.movie_id);
-    },
+    
   },
+  created() {
+      // MovieService.getMovie(this.$route.params.movie_id);
+      MovieService.getAllMovies().then(response => {
+        // if (response.status === 200) {
+        //   this.movies = response.data;
+        //   // console.log(this.movies);
+      //   // }
+      this.movies = response.data
+      console.log(this.movies)
+      
+      })
+// console.log(this.movies)
+    }, 
   data() {
     return {
       movie: {
@@ -40,17 +52,43 @@ export default {
       movies: [],
     };
   },
-  created() {
-    this.grabMovie();
-  },
+  // created() {
+  //   this.grabMovie();
+  // },
 };
 </script>
 
 <style>
-.movie-card {
-  /* display: flex;
-    justify-content: center;
-    background: white;
+
+.test {
+  display: flex;
+  /* height: 300px;
+  width: 200px; */
+  /* border: 3px solid red; */
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  gap: 50px;
+  
+  justify-content: space-evenly;
+
+} 
+
+.movie-details {
+   /* display: flex;
+   justify-content: space-evenly; */
+   height: 550px;
+   width: 400px;
+   color: rgb(236, 229, 226);
+   border-block-color: rgb(255, 81, 0);
+   text-align: center;
+   border: 3px solid rgb(255, 81, 0);
+   background-color: #010130;
+   opacity: 80%;
+   border-radius: 15px 50px;
+   padding: auto;
+   /* flex-wrap: wrap;  */
+
+    /*background: white;
     flex-direction: column;
     flex-wrap: wrap;
     padding: 10px, 20px, 10px, 20px;
@@ -58,34 +96,41 @@ export default {
     opacity: 80%;
     width: 500px;
     text-align: center; */
-  display: flex;
+  /* display: flex;
   justify-content: center;
+  border: 3px solid red;
   background-color: #010130;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   padding: 10px, 20px, 10px, 20px;
   border-radius: 15px 50px;
   opacity: 80%;
   width: 45em;
-  text-align: center;
+  text-align: center; */
 }
-#movie-display {
-  display: flex;
-  margin: 20px;
-  align-items: center;
+#movie {
+  /* display: flex; */
+  margin: 1px;
+  /* align-items: center; */
 }
-h4 {
-  margin: 10%;
+h3 {
+  margin: 2px;
 }
-.movie-info {
-  display: flex;
+p.summary {
+  /* display: flex;
   flex-direction: column;
-  align-content: space-around;
+  align-content: space-around; */
+  color: rgb(245, 238, 238);
+  margin: 1em;
+  
+  
 }
 table {
   margin: 10%;
 }
-/* img {
-    max-height: 600px;
-} */
+img {
+  max-height: 550px;
+  max-width: 200px;  
+    
+}
 </style>

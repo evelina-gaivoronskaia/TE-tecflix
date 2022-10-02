@@ -1,15 +1,17 @@
 <template>
   <div>
-      <movie-list />
+      <movie-card />
   </div>
 </template>
 
 <script>
-import MovieList from '@/components/MovieList';
+// import MovieList from '@/components/MovieList';
+import MovieCard from '../components/MovieCard.vue';
 export default {
     name: 'browse-movies',
     components: {
-        MovieList
+        // MovieList,
+        MovieCard
     }
 }
 </script>
