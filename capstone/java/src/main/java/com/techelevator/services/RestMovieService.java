@@ -2,6 +2,7 @@ package com.techelevator.services;
 
 import com.techelevator.model.Movie;
 import com.techelevator.model.MovieGeneral;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -25,19 +26,28 @@ public class RestMovieService implements MovieService {
 
 
     @Override
-    public List<Movie> getAllMovies() {
+    public List<Movie> getAllMovies() { //rename loadAllMovies
 
         MovieGeneral moviesGeneral = restTemplate.getForObject(API_URL, MovieGeneral.class);
         Movie[] movies = moviesGeneral.getResults();
+
         for (int i = 0; i < movies.length; i++) {
-            int actualId = movies[i].getMovieId();
-            int movieId;
-            String errorCheck = "SELECT movie_id FROM movie WHERE title ILIKE ? AND release_date ILIKE ?";
-             movieId = jdbcTemplate.queryForObject(errorCheck, int.class, movies[i].getTitle(), movies[i].getReleaseDate());
-            if (movieId != actualId) {
+            try {
+                int actualId = movies[i].getMovieId();
+                int movieId;
+                String errorCheck = "SELECT movie_id FROM movie WHERE title ILIKE ? AND release_date ILIKE ?";
+                movieId = jdbcTemplate.queryForObject(errorCheck, int.class, movies[i].getTitle(), movies[i].getReleaseDate());
+                if (movieId != actualId) {
+                    String sql = "INSERT INTO movie (movie_id, release_date, title, summary, movie_img) VALUES(?,?,?,?,?)";
+                    jdbcTemplate.update(sql, movies[i].getMovieId(), movies[i].getReleaseDate(), movies[i].getTitle(), movies[i].getSummary(), movies[i].getMovieImg());
+                }
+            }
+            catch  (EmptyResultDataAccessException e){
                 String sql = "INSERT INTO movie (movie_id, release_date, title, summary, movie_img) VALUES(?,?,?,?,?)";
                 jdbcTemplate.update(sql, movies[i].getMovieId(), movies[i].getReleaseDate(), movies[i].getTitle(), movies[i].getSummary(), movies[i].getMovieImg());
-            }
+
+        }
+
         }
         return Arrays.asList(movies);
     }
