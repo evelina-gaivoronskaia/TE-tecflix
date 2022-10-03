@@ -47,6 +47,7 @@ export default {
 </script>
 
 <style>
+  
 .movie-card {
   /* display: flex;
     justify-content: center;
@@ -85,7 +86,12 @@ h4 {
 table {
   margin: 10%;
 }
-/* img {
-    max-height: 600px;
-} */
+.movie_img {
+  width: 50%;
+  margin-left: 1.9in;
+  border-radius: 2%;
+}
+.title {
+  font-size: 130pt;
+}
 </style>

@@ -6,14 +6,11 @@ import com.techelevator.model.Movie;
 import com.techelevator.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.*;
-=======
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
->>>>>>> main
 
 import java.util.List;
 
@@ -28,10 +25,10 @@ public class MovieController {
     MovieService movieService;
     public MovieController(MovieDAO movieDAO){this.movieDao =movieDAO;}
 
-    public MovieController(MovieDAO movieDAO, MovieService movieService){
-        this.movieDao = movieDAO;
-        this.movieService = movieService;
-    }
+//    public MovieController(MovieDAO movieDAO, MovieService movieService){
+//        this.movieDao = movieDAO;
+//        this.movieService = movieService;
+//    }
 
 
     @GetMapping(path = "/movies")
