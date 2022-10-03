@@ -219,8 +219,9 @@ form {
   text-align: center;
   align-content: center;
   border-width: 3px;
-  border-style: groove;
-  border-color: #f2f2fc;
+  /* border-style: groove;
+  border-color: #f2f2fc; */
+  border-radius: 9px;
   padding: 80px;
   margin-top: 10em;
   background-color: #010130;

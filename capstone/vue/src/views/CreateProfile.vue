@@ -132,7 +132,8 @@ label {
   display: inline-block;
   width: 100px;
   margin: 10px;
-  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-family: "Bebas Neue", sans-serif;
   margin-left: 2px;
 
 }
@@ -205,8 +206,8 @@ input[type="submit"]:hover {
 
 .profile-form {
 position: relative;
-width:400px;
-height:600px;
+width:500px;
+height:500px;
 background:#010130;
 border-radius:8px;
 box-shadow:0 0 40px -10px rgb(140, 140, 140);
