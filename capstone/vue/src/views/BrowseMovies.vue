@@ -1,15 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div class="browse">
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-    /> -->
-      <movie-list />
-=======
   <div>
       <movie-card />
->>>>>>> main
   </div>
 </template>
 

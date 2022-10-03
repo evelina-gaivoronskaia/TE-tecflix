@@ -59,13 +59,6 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
-  
-.movie-card {
-  /* display: flex;
-    justify-content: center;
-    background: white;
-=======
 
 .test {
   display: flex;
@@ -96,7 +89,6 @@ export default {
    /* flex-wrap: wrap;  */
 
     /*background: white;
->>>>>>> main
     flex-direction: column;
     flex-wrap: wrap;
     padding: 10px, 20px, 10px, 20px;
@@ -136,19 +128,9 @@ p.summary {
 table {
   margin: 10%;
 }
-<<<<<<< HEAD
-.movie_img {
-  width: 50%;
-  margin-left: 1.9in;
-  border-radius: 2%;
-}
-.title {
-  font-size: 130pt;
-=======
 img {
   max-height: 550px;
   max-width: 200px;  
     
->>>>>>> main
 }
 </style>
