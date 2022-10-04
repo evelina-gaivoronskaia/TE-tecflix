@@ -6,7 +6,7 @@ public class Movie {
 
     @JsonProperty("id")
     private int movieId;
-    private int[] genre;
+    //private int[] genre;
     @JsonProperty("release_date")
     private String releaseDate;
     //private String director;
@@ -31,13 +31,13 @@ public class Movie {
         this.movieId = movieId;
     }
 
-    public int[] getGenre() {
-        return genre;
-    }
+//    public int[] getGenre() {
+//        return genre;
+//    }
 
-    public void setGenre(int[] genre) {
-        this.genre = genre;
-    }
+//    public void setGenre(int[] genre) {
+//        this.genre = genre;
+//    }
 
     public String getReleaseDate() {
         return releaseDate;
