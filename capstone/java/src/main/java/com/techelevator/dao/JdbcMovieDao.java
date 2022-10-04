@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.sql.SQLDataException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,50 +65,35 @@ public class JdbcMovieDao implements MovieDAO {
 
             //updates the movie IF MOVIE TIED TO ACCOUNT
 
-            try {
-                String movieSql = "SELECT seen FROM account_movie WHERE movie_id = ? AND account_id = ?;";
-                Boolean result = jdbcTemplate.queryForObject(movieSql, Boolean.class, movieId, accountId);
+            Integer result = getFavorite(movieId, accountId);
 
-//                String sql = "UPDATE movie SET release_date = ?, " +
-//                        "title = ?, summary = ?, movie_img = ? " +
-//                        "WHERE movie_id = ?";
-//                jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
-//                        movieToUpdate.getTitle(), movieToUpdate.getSummary(),
-//                        movieToUpdate.getMovieImg(), movieToUpdate.getMovieId());
 
-                String sql2 = "UPDATE account_movie SET favorite = ?, seen = ? " +
+                if(result == null){
+                    String insert = "INSERT INTO favorites (account_id, movie_id, favorite) VALUES (?,?,?)";
+                    jdbcTemplate.update(insert, accountId, movieId, movieToUpdate.getFavorite());
+                }
+
+                String sql2 = "UPDATE favorites SET favorite = ? " +
                         "WHERE movie_id = ? AND account_id = ?;";
 
-                jdbcTemplate.update(sql2, movieToUpdate.getFavorite(), movieToUpdate.getSeen(), movieToUpdate.getMovieId(), accountId);
-            }
-            catch (EmptyResultDataAccessException e){
-                String insert = "INSERT INTO account_movie (account_id, movie_id, favorite, seen) VALUES (?,?,?,?)";
-                   jdbcTemplate.update(insert, accountId, movieId, movieToUpdate.getFavorite(), movieToUpdate.getSeen());
-            }
+                jdbcTemplate.update(sql2, movieToUpdate.getFavorite(), movieToUpdate.getMovieId(), accountId);
 
-        try {
-            String movieSql = "SELECT seen FROM account_movie WHERE movie_id = ? AND account_id = ?;";
-            Boolean result = jdbcTemplate.queryForObject(movieSql, Boolean.class, movieId, accountId);
-
-            String sql = "UPDATE movie SET release_date = ?, " +
-                    "title = ?, summary = ?, movie_img = ? " +
-                    "WHERE movie_id = ?";
-            jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
-                    movieToUpdate.getTitle(), movieToUpdate.getSummary(),
-                    movieToUpdate.getMovieImg(), movieToUpdate.getMovieId());
-
-            String sql2 = "UPDATE account_movie SET favorite = ?, seen = ? " +
-                    "WHERE movie_id = ? AND account_id = ?;";
-
-            jdbcTemplate.update(sql2, movieToUpdate.getFavorite(), movieToUpdate.getSeen(), movieToUpdate.getMovieId(),
-                    accountId);
-        } catch (EmptyResultDataAccessException e) {
-            String insert = "INSERT INTO account_movie (account_id, movie_id, favorite, seen) VALUES (?,?,?,?)";
-            jdbcTemplate.update(insert, accountId, movieId, movieToUpdate.getFavorite(), movieToUpdate.getSeen());
-        }
 
         return getMovieByID(movieId);
 
+    }
+
+    private Integer getFavorite(int movieId, int accountId){
+        Integer result;
+
+        try{
+            String movieSql = "SELECT favorite_id FROM favorites WHERE movie_id = ? AND account_id = ?;";
+             result = jdbcTemplate.queryForObject(movieSql, Integer.class, movieId, accountId);
+        } catch(EmptyResultDataAccessException e){
+            return null;
+        }
+
+      return result;
     }
 //    @Overide
 //    public void setFavorite(int movieId ,String username){

@@ -35,10 +35,10 @@ public class RestMovieService implements MovieService {
                 int movieId;
                 String errorCheck = "SELECT movie_id FROM movie WHERE title ILIKE ? AND release_date ILIKE ?";
                 movieId = jdbcTemplate.queryForObject(errorCheck, int.class, movies[i].getTitle(), movies[i].getReleaseDate());
-//                if (movieId != actualId) {
-//                    String sql = "INSERT INTO movie (movie_id, release_date, title, summary, movie_img) VALUES(?,?,?,?,?)";
-//                    jdbcTemplate.update(sql, movies[i].getMovieId(), movies[i].getReleaseDate(), movies[i].getTitle(), movies[i].getSummary(), movies[i].getMovieImg());
-//                }
+                if (movieId != actualId) {
+                    String sql = "INSERT INTO movie (movie_id, release_date, title, summary, movie_img) VALUES(?,?,?,?,?)";
+                    jdbcTemplate.update(sql, movies[i].getMovieId(), movies[i].getReleaseDate(), movies[i].getTitle(), movies[i].getSummary(), movies[i].getMovieImg());
+                }
             }
             catch  (EmptyResultDataAccessException e){
                 String sql = "INSERT INTO movie (movie_id, release_date, title, summary, movie_img) VALUES(?,?,?,?,?)";

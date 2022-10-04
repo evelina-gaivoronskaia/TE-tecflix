@@ -1,6 +1,9 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.validation.Valid;
 
 public class Movie {
 
@@ -16,9 +19,9 @@ public class Movie {
     @JsonProperty("poster_path")
     private String movieImg;
     @JsonProperty("favorite")
-    private Boolean favorite;
+    private boolean favorite;
     @JsonProperty("seen")
-    private Boolean seen;
+    private boolean seen;
 //    final String ROUTE = "http://image.tmbd.org/t/p/w185/";
 
     public Movie() {}

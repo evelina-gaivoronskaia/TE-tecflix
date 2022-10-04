@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
     getAllMovies() {
-        return axios.get(`/movies`)
+        return axios.get(`/browseMovies`)
     },
 
     getMovie(movieId) {

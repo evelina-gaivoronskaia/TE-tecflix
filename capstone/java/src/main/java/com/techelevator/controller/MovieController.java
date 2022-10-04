@@ -48,14 +48,8 @@ public class MovieController {
         return movieDao.getMovieByID(movieId);
     }
 
-<<<<<<< HEAD
-    @RequestMapping(path = "/movies/{movieId}", method = RequestMethod.PUT)
-    public Movie updateThisMovie(@PathVariable int movieId, @RequestBody Movie updatedMovie, Principal principal){
-=======
     @PutMapping("/movies/{movieId}")
     public Movie updateThisMovie(@PathVariable int movieId, @RequestBody Movie updatedMovie, Principal principal) {
->>>>>>> main
-        updatedMovie.setMovieId(movieId);
         if (movieDao.updateMovie(updatedMovie, movieId, principal.getName()) != null) {
             return updatedMovie;
         } else {

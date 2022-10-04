@@ -1,6 +1,9 @@
 package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.validation.Valid;
 
 public class MovieDTO {
     @JsonProperty("id")
@@ -15,9 +18,10 @@ public class MovieDTO {
     @JsonProperty("poster_path")
     private String movieImg;
     @JsonProperty("favorite")
-    private Boolean favorite;
+    @Value("false")
+    private boolean favorite;
     @JsonProperty("seen")
-    private Boolean seen;
+    private boolean seen;
 
     public int getMovieId() {
         return movieId;
