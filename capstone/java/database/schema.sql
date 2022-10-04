@@ -3,7 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS movie CASCADE;
 DROP TABLE IF EXISTS account CASCADE;
-DROP TABLE IF EXISTS account_movie CASCADE;
+DROP TABLE IF EXISTS favorites CASCADE;
 DROP TABLE IF EXISTS genre CASCADE;
 DROP TABLE IF EXISTS movie_genre CASCADE;
 
@@ -55,15 +55,16 @@ CREATE TABLE movie_genre (
     CONSTRAINT FK_movie_genre_genre FOREIGN KEY(genre_id) REFERENCES genre(genre_id)
 );
 
-CREATE TABLE account_movie (
+CREATE TABLE favorites (
+    favorite_id SERIAL,
     account_id int,
     movie_id int,
     favorite BOOLEAN,
-    seen BOOLEAN,
 
-	CONSTRAINT PK_account_movie PRIMARY KEY(account_id, movie_id),
-    CONSTRAINT FK_account_movie_account FOREIGN KEY (account_id) REFERENCES account (account_id),
-    CONSTRAINT FK_account_movie_movie FOREIGN KEY (movie_id) REFERENCES movie (movie_id)
+
+	CONSTRAINT PK_favorites PRIMARY KEY (favorite_id),
+    CONSTRAINT FK_favorites_account FOREIGN KEY (account_id) REFERENCES account (account_id),
+    CONSTRAINT FK_favorites_movie FOREIGN KEY (movie_id) REFERENCES movie (movie_id)
 );
 
 INSERT INTO genre (genre_id, genre_name) VALUES (28, 'Action');
@@ -86,6 +87,7 @@ INSERT INTO genre (genre_id, genre_name) VALUES (53, 'Thriller');
 INSERT INTO genre (genre_id, genre_name) VALUES (10752, 'War');
 INSERT INTO genre (genre_id, genre_name) VALUES (37, 'Western');
 
+COMMIT TRANSACTION;
 --INSERT INTO movie (genre, release_year, director, title, summary, movie_img) VALUES ('crime', '1995', 'David Fincher', 'Se7en', 'When retiring police Detective William Somerset tackles a final case with the aid of newly transferred David Mills, they discover a number of elaborate and grizzly murders. They soon realize they are dealing with a serial killer who is targeting people he thinks represent one of the seven deadly sins. Somerset also befriends Mills wife, Tracy, who is pregnant and afraid to raise her child in the crime-riddled city.', 'https://upload.wikimedia.org/wikipedia/en/6/68/Seven_%28movie%29_poster.jpg');
 --INSERT INTO movie (genre, release_year, director, title, summary, movie_img) VALUES ('crime', '1972', 'Francis Ford Coppola', 'The Godfather', 'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.', 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY98_CR1,0,67,98_AL_.jpg');
 --INSERT INTO movie (genre, release_year, director, title, summary, movie_img) VALUES ('crime', '2000', 'Mary Harron', 'American Psycho', 'A wealthy New York City investment banking executive, Patrick Bateman, hides his alternate psychopathic ego from his co-workers and friends as he delves deeper into his violent, hedonistic fantasies.', 'https://m.media-amazon.com/images/M/MV5BZTM2ZGJmNjQtN2UyOS00NjcxLWFjMDktMDE2NzMyNTZlZTBiXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UX67_CR0,0,67,98_AL_.jpg');

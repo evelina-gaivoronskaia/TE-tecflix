@@ -11,4 +11,5 @@ public class MovieGeneral {
     public void setResults(Movie[] results) {
         this.results = results;
     }
+
 }

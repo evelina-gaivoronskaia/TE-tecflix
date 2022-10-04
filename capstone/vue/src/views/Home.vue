@@ -5,7 +5,7 @@
       >CREATE PROFILE</router-link
     >
     <router-link class="link" :to="{ name: 'browseMovies' }">
-      See Movie
+      See Movies
     </router-link>
   </div>
 </template>

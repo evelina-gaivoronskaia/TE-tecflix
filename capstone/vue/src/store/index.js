@@ -20,7 +20,16 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    movies: []
+    movies: [],
+    movie:{
+      movie_id: "",
+      title: "",
+      release_date: "",
+      summary: "",
+      movie_img: "",
+      seen: "",
+      favorite: ""
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +50,12 @@ export default new Vuex.Store({
     },
     SET_MOVIES(state, data) {
       state.movies = data;
+    },
+    SET_SEEN_STATUS(state,payload){
+      payload.movie.read = payload.value;
+    },
+    SAVE_MOVIE(state, movie) {
+      state.books.push(movie);
     }
   }
 })
