@@ -3,13 +3,17 @@
     <h1 class="logo">Tecflix</h1>
     <div id="about">
       <span>
-        We will give you movie suggestions base
-        on your favorite movies!</span
+        We will give you movie suggestions base on your favorite movies!</span
       >
     </div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="sign">Please Sign In</h1>
-      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+      <div
+        id="alert"
+        class="alert alert-danger"
+        role="alert"
+        v-if="invalidCredentials"
+      >
         Invalid username and password!
       </div>
       <div
@@ -43,16 +47,15 @@
             required
           />
         </li>
-      <li>
-      
-      <router-link style="color: orange" :to="{ name: 'register' }"
-        >Need an account?</router-link
-      >
-      </li>
+        <li>
+          <router-link class="createAccount" :to="{ name: 'register' }"
+            >Need an account?</router-link
+          >
+        </li>
       </ul>
-      <button type="submit">Sign in</button>
+      <button id="signInButton" type="submit">Sign in</button>
     </form>
-     <link
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
@@ -102,8 +105,7 @@ export default {
 </script>
 <style  scoped>
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&display=swap");
-
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&display=swap");
 
 h1.logo {
   font-size: 100px;
@@ -112,11 +114,19 @@ h1.logo {
   font-family: "Abel", "Brushstroke", "Haettenschweiler", "Arial Narrow Bold",
     sans-serif;
   text-align: center;
-
   background: -webkit-linear-gradient(rgb(250, 146, 49), rgb(232, 236, 252));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+#alert {
+  font-size: 20px;
+  text-align: center;
+  color: #f24700;
+  font-family: "Bebas Neue", "Abel", "Brushstroke", "Haettenschweiler",
+    "Arial Narrow Bold", sans-serif;
+}
+
 .sign {
   height: 0px;
   width: 100%;
@@ -129,7 +139,8 @@ h1.logo {
   font-family: "Bebas Neue", sans-serif;
   font-size: 30px;
   font-weight: 3;
-   /* border: 2px inset #9090a5; 
+  margin: 5px 5px 15px 5px;
+  /* border: 2px inset #9090a5; 
   border-style:outset;
   border-radius: 1em; 
   border-color: #e6e6f1; */
@@ -141,20 +152,27 @@ h1.logo {
   margin-bottom: 55px;
   border-color: #010130; */
 }
-form{
- margin: 0 auto;
+form {
+  margin: 0 auto;
   width: 450px;
   height: 350px;
   background-color: #010130;
   padding: 2em;
-  background:#010130;
-border-radius:8px;
-   /* border: 2px inset #9090a5; 
+  background: #010130;
+  border-radius: 8px;
+  /* border: 2px inset #9090a5; 
   border-style:outset;
   border-radius: 1em; 
   border-color: #e6e6f1;  */
   align-items: center;
-  
+}
+
+.createAccount {
+  color: rgb(240, 172, 83);
+  margin: 5px 5px 5px 100px;
+  font-size: 20px;
+  font-family: "Bebas Neue", "Abel", "Brushstroke", "Haettenschweiler",
+    "Arial Narrow Bold", sans-serif;
 }
 
 .sign {
@@ -195,22 +213,16 @@ text-align: center; */
   text-align: center;
   border-style: none;
   margin-bottom: 60px;
-  
 }
-
-
 
 span {
   background-color: rgba(10, 2, 48, 0.1);
 }
 
-
-
-
 input[type="text"] {
   padding: 4px;
   border: 0;
-  box-shadow: 0 0 15px 2px #ff6626; 
+  box-shadow: 0 0 15px 2px #ff6626;
 }
 input[type="password"] {
   padding: 4px;
@@ -251,6 +263,12 @@ button {
 }
 button:hover {
   background: rgb(240, 172, 83);
+}
+
+#signInButton {
+  font-family: "Bebas Neue", "Abel", "Brushstroke", "Haettenschweiler",
+    "Arial Narrow Bold", sans-serif;
+  font-size: 25px;
 }
 
 button:hover {

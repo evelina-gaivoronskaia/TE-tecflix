@@ -9,41 +9,46 @@
         v-bind:key="movie.title"
         class="movie-details"
       >
-        <!-- <h1>HEllo</h1> -->
-        <h2 class="title">{{ movie.title }}</h2>
-        <img
-          v-bind:src="'http://image.tmdb.org/t/p/w185' + movie.poster_path"
-          id="movie"
-        />
-        <h3 class="release-date">{{ movie.release_date }}</h3>
-        <p class="summary">{{ movie.overview }}</p>
-        <input
+        <div id="movieInfo">
+          <!-- <h1>HEllo</h1> -->
+          <h2 class="title">{{ movie.title }}</h2>
+          <img
+            v-bind:src="'http://image.tmdb.org/t/p/w185' + movie.poster_path"
+            id="movie"
+          />
+          <h3 class="release-date">{{ movie.release_date }}</h3>
+          <p class="summary">{{ movie.overview }}</p>
+        </div>
+        <!-- <input
           type="checkbox"
           id="seen"
           v-model="movie.seen"
           class="form-control"
         />
-        <label id="seenMovieSection" for="seen">I have seen this movie </label>
+        <label id="seenMovieSection" for="seen">I have seen this movie </label> -->
+        <div id="movieFrom">
+          <div id="preference">
+            <input
+              type="checkbox"
+              id="favorite"
+              v-model="movie.favorite"
+              class="form-control"
+              name="isFavorited"
+              value="movie.favorite"
+            />
 
-        <input
-          type="checkbox"
-          id="favorite"
-          v-model="movie.favorite"
-          class="form-control"
-          name="isFavorited"
-          value="movie.favorite"
-        />
-        <label id="favoriteMovieSection" for="favorite"
-          >This is my favorite movie
-        </label>
-
-        <button
-          id="update"
-          class="btn btn-lg btn-primary btn-block"
-          v-on:click="updateThisMovie(movie)"
-        >
-          Update movie
-        </button>
+            <label id="favoriteMovieSection" for="favorite"
+              >This is my favorite movie
+            </label>
+          </div>
+          <button
+            id="update"
+            class="btn btn-lg btn-primary btn-block"
+            v-on:click="updateThisMovie(movie)"
+          >
+            Update movie
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -105,7 +110,7 @@ export default {
         release_date: "",
         overview: "",
         poster_path: "",
-        seen: false,
+        // seen: false,
         favorite: false,
       },
       movies: [],
@@ -143,49 +148,58 @@ h1 {
 }
 
 .movie-details {
-  /* display: grid;
+  display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 550px 180px;
+  grid-template-rows: 600px 150px;
   grid-template-areas:
     "movieInfo"
-    "movieForm"; */
-  gap: 10px;
-  height: 600px;
+    "movieForm";
+  gap: 20px;
+  height: 750px;
   width: 300px;
   color: rgb(236, 229, 226);
   border-block-color: rgb(255, 81, 0);
   text-align: center;
   border: 3px solid rgb(255, 81, 0);
   background-color: #010130;
-  opacity: 80%;
+  opacity: 100%;
   border-radius: 15px 50px;
   padding: auto;
-  /* flex-wrap: wrap;  */
-
-  /* display: flex;
-   justify-content: space-evenly; */
-  /* height: 550px;
-  width: 200px;
-  color: rgb(236, 229, 226);
-  border-block-color: rgb(255, 81, 0);
-  text-align: center;
-  border: 3px solid rgb(255, 81, 0);
-  background-color: #010130;
-  /* opacity: 80%; */
-  /* border-radius: 15px 50px;
-  opacity: 80%;
-  width: 45em;
-  text-align: center;  */
 }
-/* #movieInfo {
+
+#movieInfo {
   grid-area: "movieInfo";
 }
 
-#moviePersonalInfo {
+#movieForm {
   grid-area: "movieForm";
+  /* margin: 5px 5px 5px 5px;
+  font-size: 20px; */
 }
 
-#favoriteMovieSection,
+#preference {
+  display: flex;
+  justify-content: center;
+}
+
+#favorite {
+  width: 10%;
+  margin: 5px 15px 5px;
+}
+
+#favoriteMovieSection {
+  text-align: left;
+}
+
+#update {
+  display: block;
+  justify-self: center;
+  margin: 5px 80px 5px 80px;
+  width: 0.9fr;
+  height: 30px;
+}
+
+/* #favoriteMovieSection,
 #update {
   margin: 5px 5px 5px 5px;
   font-size: 20px;

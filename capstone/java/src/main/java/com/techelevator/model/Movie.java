@@ -20,8 +20,8 @@ public class Movie {
     private String movieImg;
     @JsonProperty("favorite")
     private boolean favorite;
-    @JsonProperty("seen")
-    private boolean seen;
+//    @JsonProperty("seen")
+//    private boolean seen;
 //    final String ROUTE = "http://image.tmbd.org/t/p/w185/";
 
     public Movie() {}
@@ -92,11 +92,11 @@ public class Movie {
         this.favorite = favorite;
     }
 
-    public Boolean getSeen() {
-        return seen;
-    }
-
-    public void setSeen(Boolean seen) {
-        this.seen = seen;
-    }
+//    public Boolean getSeen() {
+//        return seen;
+//    }
+//
+//    public void setSeen(Boolean seen) {
+//        this.seen = seen;
+//    }
 }

@@ -239,7 +239,7 @@ form {
 }
 
 #link {
-  color: #b95d07;
+  color: rgb(240, 172, 83);
 }
 
 /* #createAccount {
