@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class MovieController {
 //    }
 
 
-    @GetMapping(path = "/movies")
+    @GetMapping(path = "/browseMovies")
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
     }
@@ -55,5 +56,8 @@ public class MovieController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found to update.");
         }
     }
+
+//    @RequestMapping(value ="/movies/seen", method = RequestMethod.PUT)
+//    public void  addSeen(@PathVariable int movie_id, @RequestBody Movie movie)
 
 }

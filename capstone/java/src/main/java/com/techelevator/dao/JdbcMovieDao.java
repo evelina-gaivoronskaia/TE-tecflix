@@ -67,12 +67,12 @@ public class JdbcMovieDao implements MovieDAO{
                 String movieSql = "SELECT seen FROM account_movie WHERE movie_id = ? AND account_id = ?;";
                 Boolean result = jdbcTemplate.queryForObject(movieSql, Boolean.class, movieId, accountId);
 
-                String sql = "UPDATE movie SET release_date = ?, " +
-                        "title = ?, summary = ?, movie_img = ? " +
-                        "WHERE movie_id = ?";
-                jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
-                        movieToUpdate.getTitle(), movieToUpdate.getSummary(),
-                        movieToUpdate.getMovieImg(), movieToUpdate.getMovieId());
+//                String sql = "UPDATE movie SET release_date = ?, " +
+//                        "title = ?, summary = ?, movie_img = ? " +
+//                        "WHERE movie_id = ?";
+//                jdbcTemplate.update(sql, movieToUpdate.getReleaseDate(),
+//                        movieToUpdate.getTitle(), movieToUpdate.getSummary(),
+//                        movieToUpdate.getMovieImg(), movieToUpdate.getMovieId());
 
                 String sql2 = "UPDATE account_movie SET favorite = ?, seen = ? " +
                         "WHERE movie_id = ? AND account_id = ?;";
@@ -86,7 +86,21 @@ public class JdbcMovieDao implements MovieDAO{
 
 
         return getMovieByID(movieId);
+
     }
+//    @Overide
+//    public void setFavorite(int movieId ,String username){
+//        String accountIdSql = "SELECT account_id FROM account " +
+//                "JOIN users ON account.user_id = users.user_id " +
+//                "WHERE username = ?";
+//        Integer accountId = jdbcTemplate.queryForObject(accountIdSql, Integer.class, username);
+//
+//
+//        String sql="INSERT INTO favorites(account_id,movie_id,favorite)" +
+//                "VALUES (?,?,?)";
+//
+//    }
+
 
     @Override
     public boolean deleteMovie(int movieId) {

@@ -64,11 +64,11 @@ const router = new Router({
       component: CreateProfile,
 
     },
-    {
-      path:"/movies/{id}",
-      name:"browseMovies",
-      component: BrowseMovies,
-    },
+    // {
+    //   path:"/movies/{id}",
+    //   name:"browseMovies",
+    //   component: BrowseMovies,
+    // },
     {
       path: "/movieCard",
       name: "movieCard",

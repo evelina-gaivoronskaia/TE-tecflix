@@ -1,6 +1,9 @@
 <template>
   <!-- <div class="card" v-on:click="getMovie" v-bind:to="{name: 'movie-details'}"> -->
+  
   <div class="test">
+    <h1>Movies</h1>
+    <div class= "card">
     <div v-for="movie in movies" v-bind:key="movie.title" class="movie-details">
       <!-- <h1>HEllo</h1> -->
       <h2 class="title">{{ movie.title }}</h2>
@@ -8,6 +11,7 @@
       <h3 class="release-date">{{ movie.release_date }}</h3>
       <p class="summary">{{ movie.overview }}</p>
     </div>
+  </div>
   </div>
 </template>
 
@@ -17,13 +21,13 @@ import MovieService from "../services/MovieService";
 
 export default {
   name: "movie-card",
-  // props: {
-  //   movie: Object,
-  //   enableAdd:{
-  //     type:Boolean,
-  //     default:false
+  props: {
+    enableAdd:{
+      type:Boolean,
+      default:false
       
-    
+    }
+  }, 
   
   
   
@@ -69,8 +73,21 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
-.test {
+h1{
+  text-align: center;
+  font-size: 150px;
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  margin:5%;
+  border: 2px solid rgb(160,99,7);
+  background-color: white;
+  
+
+}
+
+.card {
   display: flex;
   /* height: 300px;
   width: 200px; */
@@ -93,7 +110,7 @@ export default {
    text-align: center;
    border: 3px solid rgb(255, 81, 0);
    background-color: #010130;
-   opacity: 80%;
+   /* opacity: 80%; */
    border-radius: 15px 50px;
    padding: auto;
    /* flex-wrap: wrap;  */
