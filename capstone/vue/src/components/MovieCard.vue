@@ -221,6 +221,7 @@ p.summary {
   color: rgb(245, 238, 238);
   margin: 1em;
 }
+
 table {
   margin: 10%;
 }

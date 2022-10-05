@@ -48,7 +48,9 @@
             class="form-control"
             v-model="profile.timeZone"
           >
-            <option value="" disabled selected hidden>Please select time zone</option>
+            <option value="" disabled selected hidden>
+              Please select time zone
+            </option>
             <option value="CDT">Central Daylight Time</option>
             <option value="EDT">Eastern Daylight Time</option>
             <option value="MDT">Mountain Daylight Time</option>
@@ -66,7 +68,7 @@
             name="subscribe"
             v-model="profile.subscribedToEmailList"
           />
-          <label for="subscribedToEmailList" >Subscribe to email list </label>
+          <label for="subscribedToEmailList">Subscribe to email list </label>
         </li>
         <li>
           <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -115,7 +117,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
 
-
 /* input[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -126,7 +127,6 @@ export default {
   box-sizing: border-box;
 } */
 
-
 label {
   color: #ff6626;
   display: inline-block;
@@ -135,7 +135,6 @@ label {
   font-size: 20px;
   font-family: "Bebas Neue", sans-serif;
   margin-left: 2px;
-
 }
 .cp {
   font-family: "Bebas Neue", sans-serif;
@@ -145,16 +144,14 @@ label {
   text-align: center;
 }
 
-
 input[type="text"] {
   padding: 5px;
   border: 0;
   box-shadow: 0 0 10px 2px #f24700;
 }
 
-
-
-input,textarea{
+input,
+textarea {
   width: 200px;
   box-sizing: border-box;
 }
@@ -169,10 +166,8 @@ input,textarea{
         padding: 0px 0px 5px 15px;
         box-sizing: border-box;
         border-radius: 8px; */
- 
- 
- 
- /* display: flex;
+
+  /* display: flex;
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
@@ -180,7 +175,6 @@ input,textarea{
   min-height: calc(100vh-74px);
   padding: 1; */
 
-  
   /* width: 100%;
   /* background-color: #0525a8;
   color: orange; */
@@ -188,44 +182,39 @@ input,textarea{
   margin: 20px 0;
   border: none;
   border-radius: 4px;
-  cursor: pointer; */ 
+  cursor: pointer; */
 }
 
 ul {
   list-style: none;
   padding: 20;
   margin: 30px;
-  
- 
 }
-
 
 input[type="submit"]:hover {
   background-color: white;
 }
 
 .profile-form {
-position: relative;
-width:500px;
-height:500px;
-background:#010130;
-border-radius:8px;
-box-shadow:0 0 40px -10px rgb(140, 140, 140);
-margin:calc(50vh - 220px) auto;
-padding:20px 30px; 
-/* max-width:800px; */
-box-sizing:border-box;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background: #010130;
+  border-radius: 8px;
+  box-shadow: 0 0 40px -10px rgb(140, 140, 140);
+  margin: calc(50vh - 220px) auto;
+  padding: 20px 30px;
+  /* max-width:800px; */
+  box-sizing: border-box;
 
-
-
- /*margin: 0 auto;
+  /*margin: 0 auto;
   width: 500px;
   Form outline 
   padding: 2em;
    border: 2px inset #020262; 
   border-style:outset;
   border-radius: 4em; 
-  border-color: #e6e6f1; */ 
+  border-color: #e6e6f1; */
 
   /* border-radius: 5px;
   background: linear-gradient(rgb(250, 130, 1), rgb(4, 38, 150));
@@ -245,11 +234,10 @@ button {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   color: #fafaff;
-  background-color:  #f24700;
+  background-color: #f24700;
   text-align: center;
   transition: all 0.2s;
   margin-left: 8em;
-
 }
 button:hover {
   color: #b95d07;

@@ -1,23 +1,26 @@
 <template>
   <div>
-      <movie-card />
-      <!-- <movie-card-two/> -->
-
+    <!-- <filter-movies /> -->
+    <movie-card />
+    <!-- <movie-card-two/> -->
   </div>
 </template>
 
 <script>
 // // import MovieList from '@/components/MovieList';
-import MovieCard from '../components/MovieCard.vue';
+// import FilterMovies from "../components/FilterInput.vue";
+import MovieCard from "../components/MovieCard.vue";
+
 // import MovieCardTwo from '../components/MovieCard2.vue'
 export default {
-    name: 'browse-movies',
-    components: {
-        // MovieList,
-        MovieCard,
-        // MovieCardTwo
-    }
-}
+  name: "browse-movies",
+  components: {
+    // MovieList,
+    // FilterMovies,
+    MovieCard,
+    // MovieCardTwo
+  },
+};
 </script>
 
 <style scoped>
@@ -25,7 +28,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap"); */
 
 .browse {
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   /* background: blueviolet; */
