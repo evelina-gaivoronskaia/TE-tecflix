@@ -12,6 +12,10 @@ export default {
 
     updateMovie(movie, movieId) {
         return axios.put(`/movies/${movieId}`, movie)
+    },
+
+    getFavoriteMovies() {
+        return axios.get(`/browseMovies/favorite`)
     }
 
 }

@@ -10,6 +10,7 @@ import MovieCard from '../components/MovieCard'
 import MovieList from '../components/MovieList'
 import BrowseMovies from '../views/BrowseMovies'
 import Movie from '../views/Movie'
+import FavoriteMovieCard from '../components/FavoriteMovieCard'
 
 Vue.use(Router)
 
@@ -88,8 +89,12 @@ const router = new Router({
       path: "/movie",
       name: "movie",
       component: Movie,
+    },
+    {
+      path: "/browseMovies/favorite",
+      name: "favoriteMovieCard",
+      component: FavoriteMovieCard,
     }
-
 
   ]
 })

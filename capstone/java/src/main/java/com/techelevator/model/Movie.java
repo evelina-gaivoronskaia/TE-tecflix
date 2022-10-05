@@ -26,6 +26,14 @@ public class Movie {
 
     public Movie() {}
 
+    public Movie(int movieId, String releaseDate, String title, String summary, String movieImg, boolean favorite) {
+        this.movieId = movieId;
+        this.releaseDate = releaseDate;
+        this.title = title;
+        this.summary = summary;
+        this.movieImg = movieImg;
+    }
+
     public int getMovieId() {
         return movieId;
     }

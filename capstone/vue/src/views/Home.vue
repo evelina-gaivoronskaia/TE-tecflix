@@ -5,7 +5,10 @@
       >CREATE PROFILE</router-link
     >
     <router-link class="link" :to="{ name: 'browseMovies' }">
-      See Movies
+      See All Movies
+    </router-link>
+    <router-link class="link" :to="{ name: 'favoriteMovieCard' }">
+      See Favorite Movies
     </router-link>
   </div>
 </template>
@@ -31,7 +34,7 @@ export default {
   text-align: center;
   position: relative;
   top: 50%;
-  transform: translateY(30%);
+  transform: translateY(20%);
   left: 25%;
   right: 25%;
   color: #ff6626;
@@ -45,6 +48,7 @@ export default {
   text-size-adjust: auto;
 }
 .link {
+  display: block;
   color: #e88b65;
   font-size: 50px;
   font-family: "Bebas Neue", sans-serif;

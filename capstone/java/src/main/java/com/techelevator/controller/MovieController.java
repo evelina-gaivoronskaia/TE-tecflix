@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -41,6 +42,11 @@ public class MovieController {
     @GetMapping(path = "/browseMovies")
     public List<Movie> getAllMovies() {
         return movieService.getAllMovies();
+    }
+
+    @GetMapping(path = "/browseMovies/favorite")
+    public ArrayList<Movie> getAllFavoriteMovies(Principal principal){
+        return movieService.getFavoriteMovies(principal.getName());
     }
 
     @RequestMapping(path = "movies/{id}", method = RequestMethod.GET)
