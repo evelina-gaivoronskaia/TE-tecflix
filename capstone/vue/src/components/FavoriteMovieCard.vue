@@ -2,7 +2,7 @@
   <!-- <div class="card" v-on:click="getMovie" v-bind:to="{name: 'movie-details'}"> -->
 
   <div class="test">
-    <h1>Movies</h1>
+    <h1>Favorites</h1>
     <div class="card">
       <div
         v-for="movie in movies"
