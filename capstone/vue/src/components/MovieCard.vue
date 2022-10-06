@@ -38,7 +38,7 @@
             />
 
             <label id="favoriteMovieSection" for="favorite"
-              >This is my favorite movie
+              >Favorite
             </label>
           </div>
           <button
@@ -46,7 +46,7 @@
             class="btn btn-lg btn-primary btn-block"
             v-on:click="updateThisMovie(movie)"
           >
-            Update movie
+            Confirm Fav.
           </button>
         </div>
       </div>
@@ -133,6 +133,7 @@ h1 {
   margin: 5%;
   border: 2px solid rgb(160, 99, 7);
   background-color: white;
+  border-radius: 10px;
 }
 
 .card {

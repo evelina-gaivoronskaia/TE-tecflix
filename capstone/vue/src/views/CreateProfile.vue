@@ -5,7 +5,7 @@
       rel="stylesheet"
     />
     <form class="profile-form" @submit.prevent="createProfile">
-      <h1 class="cp">Create Profile</h1>
+      <h1 class="cp">Update Profile</h1>
 
       <ul>
         <li>

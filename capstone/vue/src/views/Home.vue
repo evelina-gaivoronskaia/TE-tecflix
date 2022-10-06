@@ -2,13 +2,13 @@
   <div class="home">
     <h1 class="header">HOME</h1>
     <router-link class="link" :to="{ name: 'createProfile' }"
-      >CREATE PROFILE</router-link
+      >UPDATE PROFILE</router-link
     >
     <router-link class="link" :to="{ name: 'browseMovies' }">
-      See All Movies
+      See Movies
     </router-link>
     <router-link class="link" :to="{ name: 'favoriteMovieCard' }">
-      See Favorite Movies
+      My FAVORITES
     </router-link>
   </div>
 </template>
@@ -38,6 +38,7 @@ export default {
   left: 25%;
   right: 25%;
   color: #ff6626;
+  border-radius: 10px;
 }
 .header {
   font-size: 150px;

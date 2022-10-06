@@ -2,9 +2,9 @@
   <div id="login" class="text-center">
     <h1 class="logo">Tecflix</h1>
     <div id="about">
-      <span>
+      <!-- <span>
         We will give you movie suggestions base on your favorite movies!</span
-      >
+      > -->
     </div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="sign">Please Sign In</h1>
@@ -108,7 +108,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Monoton&display=swap");
 
 h1.logo {
-  font-size: 100px;
+  font-size: 150px;
   letter-spacing: 3px;
   text-transform: uppercase;
   font-family: "Abel", "Brushstroke", "Haettenschweiler", "Arial Narrow Bold",
@@ -279,4 +279,5 @@ button:hover {
 .logo {
   font-size: 5rcm;
 }
+
 </style>
