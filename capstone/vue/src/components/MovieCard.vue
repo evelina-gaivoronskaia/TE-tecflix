@@ -150,12 +150,12 @@ h1 {
 .movie-details {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 600px 150px;
+  grid-template-rows: 700px 150px;
   grid-template-areas:
     "movieInfo"
     "movieForm";
   gap: 20px;
-  height: 750px;
+  height: 850px;
   width: 300px;
   color: rgb(236, 229, 226);
   border-block-color: rgb(255, 81, 0);
