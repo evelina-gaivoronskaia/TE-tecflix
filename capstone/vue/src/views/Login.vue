@@ -115,8 +115,8 @@ h1.logo {
     sans-serif;
   text-align: center;
   background: -webkit-linear-gradient(rgb(250, 146, 49), rgb(232, 236, 252));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
 }
 
 #alert {
